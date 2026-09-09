@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-body text-ink;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display;
+  }
+}
+
+@layer utilities {
+  /* Tabular numerals for timetable clock times, so a column of times lines
+     up cleanly instead of jittering with proportional digit widths. */
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* The signature "ticket stub" perforation: a dashed rule with punched
+     半-circle notches on either edge. Used sparingly -- between a card's
+     header stub and its body -- not as a default border everywhere. */
+  .perforated {
+    position: relative;
+    border-top: 2px dashed theme('colors.rule');
+  }
+  .perforated::before,
+  .perforated::after {
+    content: '';
+    position: absolute;
+    top: -9px;
+    width: 18px;
+    height: 18px;
+    border-radius: 9999px;
+    background: theme('colors.paper');
+  }
+  .perforated::before { left: -9px; }
+  .perforated::after { right: -9px; }
+}
