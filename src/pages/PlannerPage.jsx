@@ -71,7 +71,7 @@ function PlannerPageInner() {
   return (
     <Shell>
       <TripSummaryCard
-        trip={tripInput.trip}
+        trip={{ ...tripInput.trip, budget: plan?.tripSummary?.budget }}
         destinationCount={tripInput.destinations.length}
         intro={plan?.tripSummary?.intro}
       />
